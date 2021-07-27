@@ -1,0 +1,200 @@
+city,country,population,size
+Tokyo,Japan,37977000,large
+Jakarta,Indonesia,34540000,large
+Delhi,India,29617000,large
+Manila,Philippines,23088000,large
+Shanghai,China,22120000,large
+São Paulo,Brazil,22046000,large
+Seoul,"Korea, South",21794000,large
+Mexico City,Mexico,20996000,large
+Cairo,Egypt,19372000,large
+New York,United States,18713220,large
+Moscow,Russia,17125000,large
+Bangkok,Thailand,17066000,large
+Buenos Aires,Argentina,16157000,large
+Dhaka,Bangladesh,15443000,large
+Lagos,Nigeria,15279000,large
+Istanbul,Turkey,15154000,large
+Karachi,Pakistan,14835000,large
+Tehran,Iran,13633000,large
+Ho Chi Minh City,Vietnam,13312000,large
+Paris,France,11020000,large
+London,United Kingdom,10979000,large
+Lima,Peru,9848000,large
+Bogotá,Colombia,9464000,large
+Luanda,Angola,8417000,large
+Kuala Lumpur,Malaysia,8285000,large
+Hong Kong,Hong Kong,7347000,large
+Khartoum,Sudan,7282000,large
+Santiago,Chile,7007000,large
+Riyadh,Saudi Arabia,6881000,large
+Dar es Salaam,Tanzania,6698000,large
+Baghdad,Iraq,5796000,large
+Singapore,Singapore,5745000,large
+Nairobi,Kenya,5545000,large
+Rangoon,Burma,5430000,large
+Toronto,Canada,5429524,large
+Sydney,Australia,5312163,large
+Abidjan,Côte D’Ivoire,4980000,large
+Barcelona,Spain,4588000,large
+Johannesburg,South Africa,4434827,large
+Casablanca,Morocco,4370000,large
+Kabul,Afghanistan,3678034,large
+Berlin,Germany,3644826,large
+Algiers,Algeria,3415811,large
+Santa Cruz,Bolivia,3151676,large
+Addis Ababa,Ethiopia,3041002,large
+Kyiv,Ukraine,2967000,large
+Sanaa,Yemen,2957000,large
+Rome,Italy,2872800,large
+Pyongyang,"Korea, North",2863000,large
+Taichung,Taiwan,2803894,large
+Guayaquil,Ecuador,2723665,large
+Antananarivo,Madagascar,2610000,large
+Santo Domingo,Dominican Republic,2581827,large
+Dubai,United Arab Emirates,2502715,large
+Guatemala City,Guatemala,2450212,large
+Yaoundé,Cameroon,2440462,large
+Tashkent,Uzbekistan,2424100,large
+Accra,Ghana,2291352,large
+Baku,Azerbaijan,2181800,large
+Havana,Cuba,2141652,large
+Phnom Penh,Cambodia,2129371,large
+Mogadishu,Somalia,2120000,large
+Minsk,Belarus,2020600,large
+Bamako,Mali,2009109,large
+Caracas,Venezuela,1943901,large
+Blantyre,Malawi,1895973,large
+Bucharest,Romania,1883425,large
+Asunción,Paraguay,1870000,large
+Vienna,Austria,1840573,large
+Aleppo,Syria,1834093,large
+Brazzaville,Congo (Brazzaville),1827000,large
+Almaty,Kazakhstan,1806833,large
+Warsaw,Poland,1790658,large
+Budapest,Hungary,1752286,large
+Lusaka,Zambia,1742979,large
+Conakry,Guinea,1667864,large
+Kampala,Uganda,1659600,large
+Ouagadougou,Burkina Faso,1626950,large
+Harare,Zimbabwe,1606000,large
+Auckland,New Zealand,1467800,large
+Muscat,Oman,1421409,large
+The Hague,Netherlands,1406000,large
+Ulaanbaatar,Mongolia,1396288,large
+Belgrade,Serbia,1378682,large
+Sofia,Bulgaria,1355142,large
+Prague,Czechia,1324277,large
+Montevideo,Uruguay,1319108,large
+Doha,Qatar,1312947,large
+Comayagüela,Honduras,1250000,large
+Tunis,Tunisia,1200000,large
+Maputo,Mozambique,1191613,large
+Dublin,Ireland,1173179,large
+Dakar,Senegal,1146053,large
+Tripoli,Libya,1126000,large
+Tbilisi,Georgia,1118035,large
+N’Djamena,Chad,1092066,large
+Copenhagen,Denmark,1085000,large
+Yerevan,Armenia,1075800,large
+Managua,Nicaragua,1028808,large
+Bishkek,Kyrgyzstan,1027200,large
+Niamey,Niger,1026848,small
+Monrovia,Liberia,1021762,small
+Port-au-Prince,Haiti,987310,small
+Kathmandu,Nepal,975453,small
+Stockholm,Sweden,972647,small
+Asmara,Eritrea,963000,small
+Freetown,Sierra Leone,951000,small
+Jerusalem,Israel,919438,small
+Panama City,Panama,880691,small
+Libreville,Gabon,797003,small
+Zagreb,Croatia,790017,small
+Cotonou,Benin,762000,small
+Vientiane,Laos,760000,small
+Colombo,Sri Lanka,752993,small
+Kigali,Rwanda,745261,small
+Bangui,Central African Republic,734350,small
+Riga,Latvia,698529,small
+Oslo,Norway,693494,small
+Chisinau,Moldova,685900,small
+Athens,Greece,664046,small
+Bujumbura,Burundi,658859,small
+Helsinki,Finland,642045,small
+Skopje,Macedonia,640000,small
+Kuwait City,Kuwait,637411,small
+Kingston,Jamaica,580000,small
+Vilnius,Lithuania,574147,small
+Macau,Macau,568700,small
+San Salvador,El Salvador,567698,small
+Djibouti,Djibouti,562000,small
+Lisbon,Portugal,506654,small
+Tallinn,Estonia,434562,small
+Bratislava,Slovakia,429564,small
+Tirana,Albania,418495,small
+Bissau,Guinea-Bissau,395954,small
+Juba,South Sudan,372410,small
+Port Moresby,Papua New Guinea,364125,small
+Beirut,Lebanon,361366,small
+San Juan,Puerto Rico,331165,small
+Nicosia,Cyprus,330000,small
+Windhoek,Namibia,322500,small
+San José,Costa Rica,288054,small
+Ljubljana,Slovenia,284355,small
+Sarajevo,Bosnia And Herzegovina,275524,small
+Nassau,"Bahamas, The",274400,small
+Gaborone,Botswana,231626,small
+Paramaribo,Suriname,223757,small
+Pristina,Kosovo,204725,small
+Georgetown,Guyana,200500,small
+Malabo,Equatorial Guinea,187302,small
+Gibraltar,Gibraltar,187083,small
+Brussels,Belgium,185103,small
+Podgorica,Montenegro,174515,small
+Manama,Bahrain,157474,small
+Willemstad,Curaçao,150000,small
+Port Louis,Mauritius,149194,small
+Pointe-à-Pitre,Guadeloupe,145511,small
+Bern,Switzerland,133798,small
+Papeete,French Polynesia,131695,small
+Reykjavík,Iceland,128793,small
+Praia,Cabo Verde,127832,small
+Maina,Guam,122411,small
+Luxembourg,Luxembourg,122273,small
+Moroni,Comoros,111329,small
+Bridgetown,Barbados,110000,small
+Thimphu,Bhutan,104000,small
+Nouméa,New Caledonia,93060,small
+Mbabane,Swaziland,90138,small
+Suva,Fiji,88271,small
+Castries,Saint Lucia,70000,small
+Cayenne,French Guiana,61550,small
+São Tomé,Sao Tome And Principe,56166,small
+Hamilton,Bermuda,52320,small
+Port-Vila,Vanuatu,51437,small
+Bandar Seri Begawan,Brunei,50000,small
+Apia,Samoa,37708,small
+Port of Spain,Trinidad And Tobago,37074,small
+Monaco,Monaco,36371,small
+Oranjestad,Aruba,34980,small
+Banjul,"Gambia, The",31356,small
+Tarawa,Kiribati,28802,small
+George Town,Cayman Islands,27704,small
+Victoria,Seychelles,26450,small
+Kingstown,Saint Vincent And The Grenadines,25418,small
+Andorra la Vella,Andorra,22151,small
+Saint John’s,Antigua And Barbuda,21926,small
+Belmopan,Belize,17222,small
+Roseau,Dominica,16582,small
+Basseterre,Saint Kitts And Nevis,13220,small
+Pago Pago,American Samoa,12576,small
+Valletta,Malta,6444,small
+Funafuti,Tuvalu,6025,small
+Grand Turk,Turks And Caicos Islands,5801,small
+Sisimiut,Greenland,5539,small
+Klaksvík,Faroe Islands,4664,small
+Saint George’s,Grenada,4315,small
+San Marino,San Marino,4040,small
+Stanley,Falkland Islands (Islas Malvinas),2213,small
+Vatican City,Vatican City,825,small
+Grytviken,South Georgia And South Sandwich Islands,99,small
