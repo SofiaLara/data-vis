@@ -46,7 +46,7 @@ function EatingHabits(ten) {
 
     // Create a select DOM element.
     this.dropdown = ten.createSelect();
-    this.dropdown.parent('ten');
+    this.dropdown.parent('0');
 
     for (var i =0; i< days.length; i++) {
       this.dropdown.option(days[i]);
