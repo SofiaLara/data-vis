@@ -92,14 +92,14 @@ function ClimateChange(two) {
       this.minYear,
       1);
     //this.startSlider.position(400, 10);
-    this.startSlider.parent('two');
+    this.startSlider.parent('8');
 
     this.endSlider = two.createSlider(this.minYear + 1,
       this.maxYear,
       this.maxYear,
       1);
     //this.endSlider.position(600, 10);
-    this.endSlider.parent('two');
+    this.endSlider.parent('8');
   };
 
   this.destroy = function () {

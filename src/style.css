@@ -1,5 +1,13 @@
 body {
   font-family: sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+canvas {
+  border-radius: 5px 5px 0 0;
+  width: 100% !important;
+  height: auto !important;
 }
 
 select {
@@ -17,8 +25,10 @@ select {
   padding: 5px;
 }
 
-.container {
+.container-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .hover {
@@ -29,13 +39,18 @@ select {
   background: gold;
 }
 
-.containerOne,
-.containerTwo,
-.containerThree,
-.containerFour,
-.containerFive,
-.containerSix,
-.containerSeven,
-.containerNine {
-  display: inline-block;
+.container-canvas {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+  width: 48%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container-canvas {
+    /* border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: lightgray; */
+    width: 100%;
+  }
 }

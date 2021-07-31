@@ -33,7 +33,7 @@ function BritishFoodAttitudes(six) {
     // Create a select DOM element.
     this.select = six.createSelect();
     //this.select.position(500, 1200);
-    this.select.parent('six');
+    this.select.parent('3');
 
     // Fill the options with all company names.
     var questions = this.data.columns;

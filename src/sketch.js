@@ -287,33 +287,56 @@
 // var tenVis = new p5(sketchTen);
 
 let screens = 9;
+
 for(let k = 0; k < screens ;k++){
 var sketches = function( ins ) { 
   //let snake, food, counter = 0;    // declare here as shared between setup and draw
   var x;
   var gallery;
+
   ins.setup = function () {
-      canvasContainer = ins.select(`${k}`);
-      var c = ins.createCanvas(500, 500);
-//     var j = ten.createCanvas(500,500);
-      c.parent(`${k}`);
-      x = Math.random()*100;
+    canvasContainer = ins.select(`${k}`);
+    var c = ins.createCanvas(500, 500);
+    c.parent(`${k}`);
       
-      gallery = new Gallery();
-      gallery.addVisual(new EatingHabits(ins));
-      gallery.addVisual(new WorldData(ins));
-      gallery.addVisual(new Nutrients(ins));
-      gallery.addVisual(new BritishFoodAttitudes(ins));
-      gallery.addVisual(new PayGapByJob2017(ins));
-      gallery.addVisual(new PayGapTimeSeries(ins));
-      gallery.addVisual(new TechDiversityGender(ins));
-      gallery.addVisual(new ClimateChange(ins));
-      gallery.addVisual(new TechDiversityRace(ins));
+    gallery = new Gallery();
+    
+    let vis = [
+      new EatingHabits(ins),
+      new WorldData(ins),
+      new TechDiversityRace(ins),
+      new BritishFoodAttitudes(ins),
+      new Nutrients(ins),
+      new PayGapByJob2017(ins),
+      new PayGapTimeSeries(ins),
+      new TechDiversityGender(ins),
+      new ClimateChange(ins)
+    ];
+
+    gallery.addVisual(vis[k]);
     };
   
-    ins.draw = function() {
-      ins.background(x, x, x);
-      gallery.visuals[k].draw();
+  ins.draw = function () {
+      const m = 100;
+  
+  const topR = 255 * ins.noise(ins.frameCount / m);
+  const topG = 255 * ins.noise(1000 + ins.frameCount / m);
+  const topB = 255 * ins.noise(2000 + ins.frameCount / m);
+  const bottomR = 255 * ins.noise(3000 + ins.frameCount / m);
+  const bottomG = 255 * ins.noise(4000  + ins.frameCount / m);
+  const bottomB = 255 * ins.noise(5000 + ins.frameCount / m);
+
+  const topColor = ins.color(topR, topG, topB);
+  const bottomColor = ins.color(bottomR, bottomG, bottomB);
+  
+  for(let y = 0; y < ins.height; y++) {
+    const lineColor = ins.lerpColor(topColor, bottomColor, y / ins.height);
+
+    ins.stroke(lineColor);
+    ins.line(0, y, ins.width, y);
+  }
+      //ins.background(50, 50, 50);
+      gallery.visuals[0].draw();
     };
   };
 

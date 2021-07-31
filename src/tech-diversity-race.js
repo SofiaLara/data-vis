@@ -34,7 +34,7 @@ function TechDiversityRace(one) {
     // Create a select DOM element.
     this.select = one.createSelect();
     //this.select.position(0, 0);
-    this.select.parent('one');
+    this.select.parent('2');
 
     // Fill the options with all company names.
     var companies = this.data.columns;

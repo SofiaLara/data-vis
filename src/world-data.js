@@ -49,7 +49,7 @@ function WorldData(nine) {
     // Create a select DOM element.
     this.dropdown = nine.createSelect();
     //this.dropdown.position(600, 1700);
-    this.dropdown.parent('nine');
+    this.dropdown.parent('1');
     this.dropdown.option("large");
     this.dropdown.option("small");
   };
