@@ -4,6 +4,19 @@ body {
   color: #fff;
 }
 
+.container-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container-canvas {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+  width: 48%;
+}
+
 canvas {
   border-radius: 5px 5px 0 0;
   width: 100% !important;
@@ -14,43 +27,16 @@ select {
   position: relative !important;
   display: block;
   padding: 10px;
-  margin: 30px;
+  margin: 15px;
 }
 
-.menu-item {
-  width: 250px;
-  height: 50px;
-  border: 1px solid gray;
-  list-style-type: none;
-  padding: 5px;
-}
-
-.container-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.hover {
-  background: lightgray;
-}
-
-.selected {
-  background: gold;
-}
-
-.container-canvas {
-  border-radius: 5px;
-  margin-bottom: 20px;
-  background-color: lightgray;
-  width: 48%;
-}
-
+/* Adding media queries for responsivness, so the canvases adjust to the width of the window */
 @media only screen and (max-width: 768px) {
   .container-canvas {
-    /* border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: lightgray; */
     width: 100%;
+  }
+
+  select {
+    max-width: 280px;
   }
 }
