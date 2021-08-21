@@ -26,8 +26,6 @@ function OneFlight(d, flo, fla, tlo, tla, fc, fcy, tc, tcy, fa, ins) {
   }
 
   this.departureY = 25;
-    //ins.map(this.from_long, -180, 180, -2000, ins.width + 2000);
-    //this.departureY = ins.map(this.from_lat, -90, 90, ins.height, 0)
   this.arrivalX = ins.map(this.to_long, -180,180, -70, ins.width + 25)
   this.arrivalY = ins.map(this.to_lat, -90, 90, ins.height - 60, 100)
 
