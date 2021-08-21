@@ -8,8 +8,8 @@ function OneCity(lng, lat, ins, x, size, country) {
   this.country = country;
 
   //Latitude and longitude for each city.
-  this.myLong = ins.map(this.lang, -180, 180, 0, ins.width);
-  this.myLat = ins.map(this.lat, -90, 90, ins.height + 130, 0);
+  this.myLong = ins.map(this.lang, -180, 180, -20, ins.width+20);
+  this.myLat = ins.map(this.lat, -90, 90, 450, 100);
 
   //Population of each city
   this.myPop = ins.map(this.pop, 37977000, -10000000, 100, 5);

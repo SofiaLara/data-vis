@@ -286,7 +286,7 @@
 // var nineVis = new p5(sketchNine);
 // var tenVis = new p5(sketchTen);
 
-let screens = 9;
+let screens = 10;
 
 for(let k = 0; k < screens ;k++){
 var sketches = function( ins ) { 
@@ -310,7 +310,8 @@ var sketches = function( ins ) {
       new PayGapByJob2017(ins),
       new PayGapTimeSeries(ins),
       new TechDiversityGender(ins),
-      new ClimateChange(ins)
+      new ClimateChange(ins),
+      new Flights(ins),
     ];
 
     gallery.addVisual(vis[k]);

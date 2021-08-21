@@ -3,8 +3,7 @@ function Flights(eight) {
   // Name for the visualisation to appear in the menu bar.
   this.name = 'Flights from uk';
 
-  // Each visualisation must have a unique ID with no special
-  // characters.
+  // Each visualisation must have a unique ID with no special characters.
   this.id = 'flights';
 
   // Property to represent whether data has been loaded.
@@ -12,40 +11,40 @@ function Flights(eight) {
 
   //Save all flights objects
   this.flights = [];
-  this.countries = [];
+  //this.countries = [];
+
+  //Store departures Cities
+  var citySelected;
 
   //Draw a world map with cities
-  //var cityRows;
+  // var cityRows;
   // this.myLat = [];
   // this.myLong = [];
 
-  //Image background
-  //var map;
-
   //Zoom
-  // let sf = 1; // scaleFactor
-  // let x = 0; // pan X
-  // let y = 0; // pan Y
+  let sf = 1; // scaleFactor
+  let x = 0; // pan X
+  let y = 0; // pan Y
 
-  // var mx, my; // mouse coords;
+  var mx, my; // mouse coords;
 
-  // var c = '';
+  var c = '';
 
   // Preload the data. This function is called automatically by the
   // gallery when a visualisation is added.
   this.preload = function () {
-    //this.map = eight.loadImage('img/world2.png');
     var self = this;
-    this.dataCity = eight.loadTable(
-      './data/flights/worldcities.csv', 'csv', 'header',
-      // Callback function to set the value
-      // this.loaded to true.
-      function (table) {
-        self.loaded = true;
-        self.setup();
-      });
+    this.map = eight.loadImage('img/world.svg');
+    // this.dataCity = eight.loadTable(
+    //   './data/flights/worldcities.csv', 'csv', 'header',
+    //   // Callback function to set the value
+    //   // this.loaded to true.
+    //   function (table) {
+    //     self.loaded = true;
+    //     self.setup();
+    //   });
     this.data = eight.loadTable(
-      './data/flights/uk-flights.csv', 'csv', 'header',
+      './data/flights/flights.csv', 'csv', 'header',
       // Callback function to set the value
       // this.loaded to true.
       function (table) {
@@ -72,10 +71,19 @@ function Flights(eight) {
       var distance = rows[i].getNum("distance")
 
       var one_flight = new OneFlight(distance, from_long, from_lat, to_long, to_lat, from_country, from_city, to_country, to_city, from_airport, eight)
-      
+      //var one_city = new OneCity(to_long, to_lat, eight);
+
       if (from_city == 'London') {
         this.flights.push(one_flight);
+        //console.log('yay', one_flight);
+      // } else if (from_city == undefined) {
+      //   console.log('nay', one_flight);
+      //   this.flights.push(one_flight);
       }
+      // else if (!this.countries.includes(one_city)) {
+      //   //console.log('nay', one_city);
+      //   this.countries.push(one_city);
+      // }
 
       // if (!this.countries.includes(to_country)) {
       //   this.countries.push(to_country);
@@ -83,18 +91,31 @@ function Flights(eight) {
       
     }
 
-    var cityRows = this.dataCity.getRows();
-    for (var j in cityRows) {
-      var lng = cityRows[j].getNum("lng");
-      var lat = cityRows[j].getNum("lat");
+    // var cityRows = this.dataCity.getRows();
+    // for (var j in cityRows) {
+    //   var lng = cityRows[j].getNum("lng");
+    //   var lat = cityRows[j].getNum("lat");
 
-      var one_country = new OneCity(lng, lat, eight);
-      this.countries.push(one_country);
+    //   var one_country = new OneCity(lng, lat, eight);
+    //   this.countries.push(one_country);
+    // }
+
+    // eight.mouseOver = function (zoomIn) {
+    //         //this.mouseOver();
+    // };
+
+    // Create a select DOM element.
+    var selected = ["City", "Luton", "Gatwick", "Heathrow", "Stansted"];
+  
+    this.dropdowns = eight.createSelect();
+    this.dropdowns.parent('9');
+    for (var i =0; i< selected.length; i++) {
+      this.dropdowns.option(selected[i]);
     }
 
-     //h.mouseWheel(zoomIn);
-      //this.mouseOver();
-    //}
+    // this.plusBtn = eight.createButton('City');
+    // this.plusBtn.parent('9');
+    // this.plusBtn.mousePressed(highCities('City'));
   };
 
   this.destroy = function () {
@@ -102,40 +123,70 @@ function Flights(eight) {
 
   this.draw = function () {
     //SVG map instead?
-    // if (this.loaded) {
-    //   //eight.image(this.map, 0,0, eight.width,eight.height);
+    if (this.loaded) {
+      eight.image(this.map, -80, 120, eight.width + 120, 257);
+      citySelected = this.dropdowns.value();
+    }
+   
+
+    // for (var x in this.countries) {
+    //   this.countries[x].drawBackgroundWorld();
     // }
 
-    for (var x in this.countries) {
-      this.countries[x].drawBackgroundWorld();
-    }
-
-    // mx = eight.mouseX;
-    // my = eight.mouseY;
+    mx = eight.mouseX;
+    my = eight.mouseY;
 
     // eight.translate(mx, my);
-    // eight.scale(sf);
     // eight.translate(-mx, -my);
     // eight.translate();
+
+    
     for (var i in this.flights) {
-      this.flights[i].drawSelectedAirport();
+      this.flights[i].drawDestinationCity();
     }
 
+    // for (var i in this.flights) {
+    //   this.flights[i].drawSelectedAirport()
+    // }
 
+
+    for (var i in this.flights) {
+      this.flights[i].drawDestinationBtn(citySelected);
+    }
+
+    
+  //  if (this.plusBtn.mousePressed()) {
+  //   console.log('here?', name);
+  //   console.log('here?', this.flights);
+  //   for (var i in this.flights) {
+  //     if (this.flights[i].from_airport === name) {
+  //       console.log('luton');
+  //       this.flights[i].drawSelectedAirport();
+  //     }
+  //   }
+  //  }
+    
+    
     // if (eight.mouseIsPressed) {
     //   console.log('here');
-    //   x -= eight.pmouseX - eight.mouseX;
-    //   y -= eight.pmouseY - eight.mouseY;
     // }
+
     
   };
 
+
+
   // function zoomIn(e) {
   //   console.log('here over');
-  //       if (e.deltaY > 0)
-  //         sf *= 1.05;
-  //       else
-  //         sf *= 0.95;
-  // }
+  //   if (e.deltaY > 0) {
+  //          sf *= 1.05;
+  //       }
+         
+  //   else {
+  //      sf *= 0.95;
+  //       }
+         
+  //   eight.scale(eight.mouseX, 1.5);
+  // };
  
 }
