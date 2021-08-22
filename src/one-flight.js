@@ -1,14 +1,14 @@
 function OneFlight(d, flo, fla, tlo, tla, fc, fcy, tc, tcy, fa, ins) {
 
-    this.distance = d
-    this.from_long = flo
-    this.from_lat = fla
-    this.to_long = tlo
-    this.to_lat = tla
-    this.from_country = fc
-    this.from_city = fcy
-    this.to_country = tc
-    this.to_city = tcy
+  this.distance = d
+  this.from_long = flo
+  this.from_lat = fla
+  this.to_long = tlo
+  this.to_lat = tla
+  this.from_country = fc
+  this.from_city = fcy
+  this.to_country = tc
+  this.to_city = tcy
   this.from_airport = fa
   
   var active = false;
@@ -65,7 +65,11 @@ function OneFlight(d, flo, fla, tlo, tla, fc, fcy, tc, tcy, fa, ins) {
         //ins.text(this.from_airport, this.departureX, this.departureY);
   }
 
-  this.drawDestinationBtn = function (city) {
+  this.drawDestinationBtn = function (city, sf, tx,ty) {
+    ins.fill(0, 0, 255);
+    ins.ellipse(this.arrivalX, this.arrivalY, 5, 5);
+    ins.noStroke();
+    
     if (city === this.from_airport) {
       ins.fill(0, 255, 0)
       ins.stroke(255);
@@ -75,7 +79,8 @@ function OneFlight(d, flo, fla, tlo, tla, fc, fcy, tc, tcy, fa, ins) {
       ins.ellipse(this.arrivalX, this.arrivalY, 5, 5)
       ins.ellipse(this.departureX, this.departureY, 15, 15)
       ins.text(this.from_airport, this.departureX, this.departureY);
-      if (ins.dist(ins.mouseX, ins.mouseY, this.arrivalX, this.arrivalY) < 5) {
+      if (ins.dist(ins.mouseX, ins.mouseY, this.arrivalX  * sf + tx, this.arrivalY * sf + ty) < 5) {
+        ins.fill(0, 0, 0)
         ins.text(this.to_city, this.arrivalX, this.arrivalY);
       }
     }

@@ -21,14 +21,8 @@ function Flights(eight) {
   // this.myLat = [];
   // this.myLong = [];
 
-  //Zoom
-  let sf = 1; // scaleFactor
-  let x = 0; // pan X
-  let y = 0; // pan Y
-
-  var mx, my; // mouse coords;
-
-  var c = '';
+  //Zoom2
+  let scaleFactor = 1, tx = 0, ty = 0;
 
   // Preload the data. This function is called automatically by the
   // gallery when a visualisation is added.
@@ -113,37 +107,38 @@ function Flights(eight) {
       this.dropdowns.option(selected[i]);
     }
 
-    // this.plusBtn = eight.createButton('City');
-    // this.plusBtn.parent('9');
-    // this.plusBtn.mousePressed(highCities('City'));
+    this.plusBtn = eight.createButton('+');
+    this.plusBtn.parent('9');
+    this.plusBtn.mousePressed(btnPlus);
+
+    this.lessBtn = eight.createButton('-');
+    this.lessBtn.parent('9');
+    this.lessBtn.mousePressed(btnLess);
   };
 
   this.destroy = function () {
   };
 
   this.draw = function () {
+    //Zoom2
+    eight.translate(tx, ty);
+    eight.scale(scaleFactor);
+
     //SVG map instead?
     if (this.loaded) {
       eight.image(this.map, -80, 120, eight.width + 120, 257);
       citySelected = this.dropdowns.value();
     }
-   
+  
 
     // for (var x in this.countries) {
     //   this.countries[x].drawBackgroundWorld();
     // }
 
-    mx = eight.mouseX;
-    my = eight.mouseY;
-
-    // eight.translate(mx, my);
-    // eight.translate(-mx, -my);
-    // eight.translate();
-
     
-    for (var i in this.flights) {
-      this.flights[i].drawDestinationCity();
-    }
+    // for (var i in this.flights) {
+    //   this.flights[i].drawDestinationCity();
+    // }
 
     // for (var i in this.flights) {
     //   this.flights[i].drawSelectedAirport()
@@ -151,7 +146,7 @@ function Flights(eight) {
 
 
     for (var i in this.flights) {
-      this.flights[i].drawDestinationBtn(citySelected);
+      this.flights[i].drawDestinationBtn(citySelected, scaleFactor,tx,ty);
     }
 
     
@@ -169,24 +164,26 @@ function Flights(eight) {
     
     // if (eight.mouseIsPressed) {
     //   console.log('here');
+    //   this.mouseWheel(e);
     // }
+
+
 
     
   };
 
+  function applyScale(s) {
+    scaleFactor = scaleFactor * s;
+    tx = (eight.height/2) * (1-s) + tx * s;
+    ty = (eight.width/2) * (1-s) + ty * s;
+  }
 
+  function btnPlus() {
+    applyScale(1.05);
+  }
 
-  // function zoomIn(e) {
-  //   console.log('here over');
-  //   if (e.deltaY > 0) {
-  //          sf *= 1.05;
-  //       }
-         
-  //   else {
-  //      sf *= 0.95;
-  //       }
-         
-  //   eight.scale(eight.mouseX, 1.5);
-  // };
+  function btnLess() {
+    applyScale(0.95);
+  }
  
 }
