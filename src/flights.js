@@ -24,6 +24,13 @@ function Flights(eight) {
   //Zoom2
   let scaleFactor = 1, tx = 0, ty = 0;
 
+  //Drag
+  let mapX = -80;
+  let mapY = 120;
+  let mapW = eight.width + 120;
+  let mapH = 257;
+  let dragging = false;
+
   // Preload the data. This function is called automatically by the
   // gallery when a visualisation is added.
   this.preload = function () {
@@ -82,6 +89,18 @@ function Flights(eight) {
       // if (!this.countries.includes(to_country)) {
       //   this.countries.push(to_country);
       // }
+
+      eight.mousePressed = function () {
+        pressed();
+      }
+
+      eight.mouseDragged = function () {
+        dragged();
+      }
+
+      eight.mouseReleased = function () {
+        released();
+      }
       
     }
 
@@ -99,6 +118,11 @@ function Flights(eight) {
     // };
 
     // Create a select DOM element.
+    let m = eight.createP('Select one UK airport to view city destinations').addClass('flights-title');
+    m.parent('9');
+    m.style('font-size', '16px');
+    m.position(20, 0);
+
     var selected = ["City", "Luton", "Gatwick", "Heathrow", "Stansted"];
   
     this.dropdowns = eight.createSelect();
@@ -107,6 +131,11 @@ function Flights(eight) {
       this.dropdowns.option(selected[i]);
     }
 
+    let p = eight.createP('Click to zoom the map');
+    p.parent('9');
+    p.style('font-size', '16px');
+    p.position(20, 0);
+
     this.plusBtn = eight.createButton('+');
     this.plusBtn.parent('9');
     this.plusBtn.mousePressed(btnPlus);
@@ -114,6 +143,7 @@ function Flights(eight) {
     this.lessBtn = eight.createButton('-');
     this.lessBtn.parent('9');
     this.lessBtn.mousePressed(btnLess);
+
   };
 
   this.destroy = function () {
@@ -126,10 +156,9 @@ function Flights(eight) {
 
     //SVG map instead?
     if (this.loaded) {
-      eight.image(this.map, -80, 120, eight.width + 120, 257);
+      eight.image(this.map, mapX, mapY, mapW, mapH);
       citySelected = this.dropdowns.value();
     }
-  
 
     // for (var x in this.countries) {
     //   this.countries[x].drawBackgroundWorld();
@@ -146,30 +175,8 @@ function Flights(eight) {
 
 
     for (var i in this.flights) {
-      this.flights[i].drawDestinationBtn(citySelected, scaleFactor,tx,ty);
+      this.flights[i].drawDestinationBtn(citySelected, scaleFactor,tx,ty, mapX, mapY);
     }
-
-    
-  //  if (this.plusBtn.mousePressed()) {
-  //   console.log('here?', name);
-  //   console.log('here?', this.flights);
-  //   for (var i in this.flights) {
-  //     if (this.flights[i].from_airport === name) {
-  //       console.log('luton');
-  //       this.flights[i].drawSelectedAirport();
-  //     }
-  //   }
-  //  }
-    
-    
-    // if (eight.mouseIsPressed) {
-    //   console.log('here');
-    //   this.mouseWheel(e);
-    // }
-
-
-
-    
   };
 
   function applyScale(s) {
@@ -184,6 +191,26 @@ function Flights(eight) {
 
   function btnLess() {
     applyScale(0.95);
+  }
+
+  var pressed = function () {
+    if (eight.mouseX > mapX
+      && eight.mouseX < mapX + mapW
+      && eight.mouseY > mapY
+      && eight.mouseY < mapY + mapH) {
+      dragging = true;
+    }
+  }
+
+  var dragged = function () {
+    if (dragging) {
+      mapX = eight.mouseX - mapW / 2;
+      mapY = eight.mouseY - mapH / 2;
+    }
+  }
+
+  var released = function () {
+     dragging = false;
   }
  
 }

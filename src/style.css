@@ -25,9 +25,19 @@ canvas {
 
 select {
   position: relative !important;
-  display: block;
+  display: inline-block;
   padding: 10px;
   margin: 15px;
+}
+
+p {
+  position: relative !important;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.flights-title {
+  display: block;
 }
 
 /* Adding media queries for responsivness, so the canvases adjust to the width of the window */
