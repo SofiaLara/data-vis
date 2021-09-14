@@ -1,4 +1,4 @@
-function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_heading, possible_values, ins) {
+function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_heading, possible_values, pics, ins) {
     //Private
     var x = x;
     var y = y;
@@ -8,6 +8,7 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
     var boxes_across = boxes_across;
     var column = table.getColumn(column_heading);
     var possible_values = possible_values;
+    var pics = pics;
 
     var colours = ['red', 'blue', 'orange', 'pink', 'purple', 'yellow', 'grey'];
     var categories = [];
@@ -29,18 +30,22 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
                 "name": possible_values[i],
                 "count": 0,
                 "color": colours[i % colours.length],
+                "pic": pics[i % pics.length],
+                //Using ES5 getter to be able to use the object's own keys to compute other props
+                get percentage() {
+                    return ins.round((this.count / column.length) * (boxes_down * boxes_across));
+                },
             });
         }
         for (var i = 0; i < column.length; i++) {
             var catLocation = categoryLocation(column[i]);
             if (catLocation != -1) {
-                categories[catLocation].count++
+                categories[catLocation].count++;
             }
         }
         //iterate over the cat and add proportions
         for (var i = 0; i < categories.length; i++) {
-            categories[i].boxes = ins.round((categories[i].count/column.length)*(boxes_down * boxes_across))
-
+            categories[i].boxes = ins.round((categories[i].count / column.length) * (boxes_down * boxes_across));
         }
     }
 
