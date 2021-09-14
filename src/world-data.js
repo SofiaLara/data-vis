@@ -12,7 +12,6 @@ function WorldData(nine) {
 
   //Save all cities objects
   this.cities = [];
-  var question;
 
   // Preload the data. This function is called automatically by the
   // gallery when a visualisation is added.
@@ -34,6 +33,10 @@ function WorldData(nine) {
       console.log('Data not yet loaded');
       return;
      }
+    
+    // Count the number of frames drawn since the visualisation
+    // started so that we can animate the plot.
+    this.frameCount = 0;
   
     var cityRows = this.dataCity.getRows();
     for (var j in cityRows) {
@@ -63,13 +66,30 @@ function WorldData(nine) {
       return;
     }
 
+    // Count the number of cities plotted each frame to create
+    // animation effect.
+    var citiesCount = 0;
+
     var sel = this.dropdown.selected();
 
     for (var x in this.cities) {
-      if (this.cities[x].size == sel) {
+      if (this.cities[x].size === sel) {
         this.cities[x].drawPopulation(sel);
+        citiesCount++;
+      }
+
+      // Stop drawing this frame when the number of years drawn is
+      // equal to the frame count. This creates the animated effect
+      // over successive frames.
+      if (citiesCount >= this.frameCount) {
+        break;
       }
     }
+
+    // Count the number of frames since this visualisation
+    // started. This is used in creating the animation effect and to
+    // stop the main p5 draw loop when all years have been drawn.
+    this.frameCount++;
     
   };
 }
