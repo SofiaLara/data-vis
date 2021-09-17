@@ -23,6 +23,13 @@ function OneFlight(d, flo, fla, tlo, tla, fc, fcy, tc, tcy, fa, ins) {
         return false
     }
   }
+
+    //Draw world map with cities coordinates
+  //Thanks to https://vda-lab.github.io/2015/10/hands-on-data-visualization-using-p5
+  // this.drawBackgroundWorld = function () {
+  //   ins.fill(0, 255, 0);
+  //   ins.ellipse(this.myLong, this.myLat, 5, 5);
+  // }
   
   //Move it over to another constructor
     // this.drawBackgroundAirport = function (pg) {
