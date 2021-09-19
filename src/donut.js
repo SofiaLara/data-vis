@@ -2,7 +2,6 @@ function Donut(x, y, diameter, data, count, one) {
   this.x = x;
   this.y = y;
   this.diameter = diameter;
-  this.labelSpace = 30;
 
   //Starts animation
   var count = count;
@@ -52,16 +51,16 @@ function Donut(x, y, diameter, data, count, one) {
   }
   
   this.checkMouse = function (labels, colors) {
-    var mouseDist = one.dist(this.x, this.y, one.mouseX, one.mouseY);
+    var mouse_d = one.dist(this.x, this.y, one.mouseX, one.mouseY);
 
     for (var i = 0; i < labels.length; i++) {
       // Check if the mouse is inside the donut
-      if (mouseDist < 100) {
+      if (mouse_d < 100) {
         //Get the color of the donut
-        var colorOver = one.get(one.mouseX, one.mouseY);
+        var color_over = one.get(one.mouseX, one.mouseY);
 
         //Compare arrays! https://stackoverflow.com/questions/22395357/how-to-compare-two-arrays-are-equal-using-javascript
-        if (colorOver.toString() === colors[i].toString()) {
+        if (color_over.toString() === colors[i].toString()) {
           one.noStroke();
           one.push();
           one.fill(colors[i]);

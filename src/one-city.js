@@ -11,13 +11,13 @@ function OneCity(lng, lat, ins, x, size, country) {
   var y = ins.height;
 
   //Population of each city
-  this.myPop = ins.map(this.pop, 37977000, -10000000, 100, 5);
+  this.my_pop = ins.map(this.pop, 37977000, -10000000, 100, 5);
   //Bigger the population, darker the color
-  this.color = ins.map(this.myPop, 100, 5, -100, 255);
+  this.color = ins.map(this.my_pop, 100, 5, -100, 255);
   //Bigger the population, taller the bar
-  this.placeY = ins.map(this.myPop, 5, 100, ins.height, 50);
+  this.place_y = ins.map(this.my_pop, 5, 100, ins.height, 50);
   //Bigger population, bigger font
-  this.fontSize = ins.map(this.myPop, 100, 5, 42, 10);
+  this.font_size = ins.map(this.my_pop, 100, 5, 42, 10);
   //Cities ranking
   this.position = Number(x) + 1;
   
@@ -38,8 +38,8 @@ function OneCity(lng, lat, ins, x, size, country) {
   this.posY = function () {
     y = y - 5;
 
-    if (y <= this.placeY) {
-      y = this.placeY
+    if (y <= this.place_y) {
+      y = this.place_y
     }
 
     return y;
@@ -49,7 +49,7 @@ function OneCity(lng, lat, ins, x, size, country) {
   //Function to show bar data on hover
   this.selected = function (sel) {
     if ((ins.mouseX > this.posX(sel)) && (ins.mouseX < (this.posX(sel)+5)) &&
-      (ins.mouseY > this.placeY) && (ins.mouseY < (this.placeY)+(550 - this.myPop))) {
+      (ins.mouseY > this.place_y) && (ins.mouseY < (this.place_y)+(550 - this.my_pop))) {
         return true
     } else {
         return false
@@ -60,17 +60,17 @@ function OneCity(lng, lat, ins, x, size, country) {
   this.drawPopulation = function (sel) {
     if (this.selected(sel)) {
       ins.fill(0, 255, 255);
-      ins.rect(this.posX(sel), this.posY(), 5, 550 - this.myPop);
+      ins.rect(this.posX(sel), this.posY(), 5, 550 - this.my_pop);
       ins.fill(this.color, 100, this.color, 100);
-      ins.ellipse(ins.width/4, ins.height/3 - 5, this.myPop, this.myPop);
+      ins.ellipse(ins.width/4, ins.height/3 - 5, this.my_pop, this.my_pop);
       ins.fill(0, 0, 0);
-      ins.textSize(this.fontSize);
+      ins.textSize(this.font_size);
       ins.text(`N˚${this.position}`, ins.width/4, ins.height/3 - 30);
       ins.text(`${this.city}, ${this.country}`, ins.width/4, ins.height/3);
       ins.text(this.pop, ins.width/4, ins.height/3 + 30);
     } else {
       ins.fill(this.color, this.color, 0);
-      ins.rect(this.posX(sel),this.posY(), 5, 550 - this.myPop);
+      ins.rect(this.posX(sel),this.posY(), 5, 550 - this.my_pop);
     }
   }
 

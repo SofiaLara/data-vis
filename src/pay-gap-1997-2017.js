@@ -1,12 +1,5 @@
 function PayGapTimeSeries(four) {
 
-  // Name for the visualisation to appear in the menu bar.
-  this.name = 'Pay gap: 1997-2017';
-
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'pay-gap-timeseries';
-
   // Title to display above the plot.
   this.title = 'Gender Pay Gap: Average difference between male and female pay.';
 
@@ -57,7 +50,7 @@ function PayGapTimeSeries(four) {
       './data/pay-gap/all-employees-hourly-pay-by-gender-1997-2017.csv', 'csv', 'header',
       // Callback function to set the value
       // this.loaded to true.
-      function (table) {
+      function () {
         self.loaded = true;
         self.setup();
       });
@@ -77,12 +70,8 @@ function PayGapTimeSeries(four) {
     this.maxPayGap = four.max(this.data.getColumn('pay_gap'));
   };
 
-  this.destroy = function () {
-  };
-
   this.draw = function () {
     if (!this.loaded) {
-      console.log('Data not yet loaded');
       return;
     }
 

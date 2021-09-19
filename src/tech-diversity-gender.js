@@ -3,10 +3,6 @@ function TechDiversityGender(three) {
   // Name for the visualisation to appear in the menu bar.
   this.name = 'Tech Diversity: Gender';
 
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'tech-diversity-gender';
-
   // Layout object to store all common plot layout parameters and
   // methods.
   this.layout = {
@@ -49,7 +45,7 @@ function TechDiversityGender(three) {
       './data/tech-diversity/gender-2018.csv', 'csv', 'header',
       // Callback function to set the value
       // this.loaded to true.
-      function (table) {
+      function () {
         self.loaded = true;
         self.setup();
       });
@@ -69,7 +65,6 @@ function TechDiversityGender(three) {
 
   this.draw = function () {
     if (!this.loaded) {
-      console.log('Data not yet loaded');
       return;
     }
 

@@ -3,10 +3,6 @@ function PayGapByJob2017(five) {
   // Name for the visualisation to appear in the menu bar.
   this.name = 'Pay gap by job: 2017';
 
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'pay-gap-by-job-2017';
-
   // Property to represent whether data has been loaded.
   this.loaded = false;
 
@@ -23,21 +19,16 @@ function PayGapByJob2017(five) {
       './data/pay-gap/occupation-hourly-pay-by-gender-2017.csv', 'csv', 'header',
       // Callback function to set the value
       // this.loaded to true.
-      function (table) {
+      function () {
         self.loaded = true;
       });
-
   };
 
   this.setup = function () {
   };
 
-  this.destroy = function () {
-  };
-
   this.draw = function () {
     if (!this.loaded) {
-      console.log('Data not yet loaded');
       return;
     }
 
@@ -56,7 +47,6 @@ function PayGapByJob2017(five) {
     numJobs = stringsToNumbers(numJobs);
 
     // Set ranges for axes.
-    //
     // Use full 100% for x-axis (proportion of women in roles).
     var propFemaleMin = 0;
     var propFemaleMax = 100;
@@ -79,9 +69,6 @@ function PayGapByJob2017(five) {
 
     for (i = 0; i < this.data.getRowCount(); i++) {
       // Draw an ellipse for each point.
-      // x = propFemale
-      // y = payGap
-      // size = numJobs
       five.ellipse(
         five.map(propFemale[i], propFemaleMin, propFemaleMax,
           this.pad, five.width - this.pad),

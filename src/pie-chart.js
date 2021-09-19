@@ -31,8 +31,6 @@ function PieChart(x, y, diameter, one) {
       Arrays must be the same length!`);
     }
 
-    // https://p5js.org/examples/form-pie-chart.html
-
     var angles = this.get_radians(data);
     var lastAngle = 0;
     var colour;
@@ -62,8 +60,8 @@ function PieChart(x, y, diameter, one) {
     if (title) {
       one.noStroke();
       one.textAlign('center', 'center');
-      one.textSize(24);
-      one.text(title, this.x, this.y - this.diameter * 0.6);
+      one.textSize(18);
+      one.text(title, this.x + 50, this.y - this.diameter * 0.6);
     }
   };
 

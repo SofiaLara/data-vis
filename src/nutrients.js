@@ -3,10 +3,6 @@ function Nutrients(seven) {
   // Name for the visualisation to appear in the menu bar.
   this.name = 'Household Nutrient Intakes: 2001-2017';
 
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'food-nutrients-timeseries';
-
   // Title to display above the plot.
   this.title = 'Household Nutrient Intakes: 2001-2017';
 
@@ -71,8 +67,6 @@ function Nutrients(seven) {
     seven.textSize(16);
 
     // Get min and max years:
-
-      
     this.endYear = 2016;
     this.startYear = 2001;
     this.minY = 999;
@@ -98,19 +92,11 @@ function Nutrients(seven) {
             // we are assuming that the data is in chronological order
             this.series[row.getString(0)].push(row.getNum(j));
         }
-        
     }
-
-
   };
 
-  this.destroy = function() {
-  };
-
-  this.draw = function() 
-  {
+  this.draw = function() {
     if (!this.loaded) {
-      console.log('Data not yet loaded');
       return;
     }
 
@@ -122,8 +108,8 @@ function Nutrients(seven) {
                         this.maxY,
                         this.layout,
                         this.mapYToHeight.bind(this),
-      0,
-    seven);
+                        0,
+                        seven);
 
     // Draw x and y axis.
     drawAxis(this.layout, seven);
@@ -131,16 +117,14 @@ function Nutrients(seven) {
     // Draw x and y axis labels.
     drawAxisLabels(this.xAxisLabel,
                    this.yAxisLabel,
-      this.layout,
-    seven);
+                   this.layout,
+                   seven);
 
     // Plot all pay gaps between startYear and endYear using the width
     // of the canvas minus margins.
-    
     var numYears = this.endYear - this.startYear;
     
-    for(var i = 0; i < numYears; i++)
-    {
+    for(var i = 0; i < numYears; i++){
         // The number of x-axis labels to skip so that only
         // numXTickLabels are drawn.
         var xLabelSkip = seven.ceil(numYears / this.layout.numXTickLabels);
@@ -154,24 +138,13 @@ function Nutrients(seven) {
         }  
     }
       
-
-
-      
     var legend = Object.keys(this.series);
-      
-
-      
-    for(var j = 0; j < legend.length; j++)
-    {
-        
-        
+   
+    for(var j = 0; j < legend.length; j++){
         var previous = null;
         // Loop over all rows and draw a line from the previous value to
         // the current.
-        for (var i = 0; i < this.series[legend[j]].length; i++) 
-        {
-        
-            
+        for (var i = 0; i < this.series[legend[j]].length; i++) {
           // Create an object to store data for the current year.
           var current = {
             // Convert strings to numbers.
@@ -187,11 +160,7 @@ function Nutrients(seven) {
                  this.mapYToHeight(previous.percentage),
                  this.mapYearToWidth(current.year),
                  this.mapYToHeight(current.percentage));
-
-      
-          }
-          else
-          {
+          } else {
             seven.push();
             seven.textAlign(seven.LEFT);
             seven.noStroke();

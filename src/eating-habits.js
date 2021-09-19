@@ -7,7 +7,7 @@ function EatingHabits(ten) {
   this.loaded = false;
 
   //Save all waffle data and objects
-  var dataWaff;
+  var data_waff;
   var waffle;
 
   //Save the day selected in the dropdown
@@ -22,7 +22,7 @@ function EatingHabits(ten) {
     cookPic = ten.loadImage('img/cooked.png');
     readyMealPic = ten.loadImage('img/readymeal.png');
     mealOutPic = ten.loadImage('img/out.png');
-    dataWaff = ten.loadTable(
+    data_waff = ten.loadTable(
       './data/survey/finalData.csv', 'csv', 'header',
       // Callback function to set the value this.loaded to true.
       function () {
@@ -67,7 +67,7 @@ function EatingHabits(ten) {
 
     daySelected = this.dropdown.value();
     //Pass days argument to draw one waffle at a time when a day is selected.
-    waffle = new Waffle(75, 75, 350, 350, 10, 10, dataWaff, daySelected, this.habits, ten);
+    waffle = new Waffle(75, 75, 350, 350, 10, 10, data_waff, daySelected, this.habits, ten);
 
     waffle.draw();
     waffle.checkMouse(ten.mouseX, ten.mouseY);

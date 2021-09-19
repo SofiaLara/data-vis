@@ -1,11 +1,7 @@
 function ClimateChange(two) {
 
-  // Name for the visualisation to appear in the menu bar.
+  // Name for the visualisation.
   this.name = 'Climate Change';
-
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'climate-change';
 
   // Names for each axis.
   this.xAxisLabel = 'year';
@@ -62,7 +58,6 @@ function ClimateChange(two) {
 
   this.setup = function () {
     if (!this.loaded) {
-      console.log('Data setup not yet loaded');
       return;
     }
 
@@ -92,24 +87,18 @@ function ClimateChange(two) {
       this.minYear,
       1);
     //this.startSlider.position(400, 10);
-    this.startSlider.parent('8');
+    this.startSlider.parent('5');
 
     this.endSlider = two.createSlider(this.minYear + 1,
       this.maxYear,
       this.maxYear,
       1);
     //this.endSlider.position(600, 10);
-    this.endSlider.parent('8');
-  };
-
-  this.destroy = function () {
-    this.startSlider.remove();
-    this.endSlider.remove();
+    this.endSlider.parent('5');
   };
 
   this.draw = function () {
     if (!this.loaded) {
-      console.log('Data draw not yet loaded');
       return;
     }
 
