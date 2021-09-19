@@ -25,7 +25,7 @@ function OneCity(lng, lat, ins, x, size, country) {
   this.posX = function (sel) {
     var pos;
     
-    if (sel == 'small') {
+    if (sel == 'Smallest') {
       pos = (x * 5) - 500;
     } else {
       pos = x * 5;

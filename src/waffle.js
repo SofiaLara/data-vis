@@ -1,4 +1,4 @@
-function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_heading, possible_values, pics, ins) {
+function Waffle(x, y, width, height, boxes_across, boxes_down, table, day_selected, habits, ins) {
     //Private
     var x = x;
     var y = y;
@@ -6,8 +6,8 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
     var height = height;
     var boxes_down = boxes_down;
     var boxes_across = boxes_across;
-    var column = table.getColumn(column_heading);
-    var possible_values = possible_values;
+    var column = table.getColumn(day_selected);
+    var habits = habits;
     var pics = pics;
 
     var colours = ['red', 'blue', 'orange', 'pink', 'purple', 'yellow', 'grey'];
@@ -25,13 +25,13 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
     }
     //Add categories to the object literal
     function addCategories() {
-        for (var i = 0; i < possible_values.length; i++) {
+        for (var i = 0; i < habits.length; i++) {
             categories.push({
-                "name": possible_values[i],
+                "name": habits[i].value,
                 "count": 0,
                 "color": colours[i % colours.length],
-                "pic": pics[i % pics.length],
-                //Using ES5 getter to be able to use the object's own keys to compute other props
+                "pic": habits[i].pic,
+                //Using getter to be able to use the object's own keys to compute other props
                 get percentage() {
                     return ins.round((this.count / column.length) * (boxes_down * boxes_across));
                 },
@@ -43,7 +43,7 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
                 categories[catLocation].count++;
             }
         }
-        //iterate over the cat and add proportions
+        //iterate over the categories and add proportions
         for (var i = 0; i < categories.length; i++) {
             categories[i].boxes = ins.round((categories[i].count / column.length) * (boxes_down * boxes_across));
         }
@@ -75,13 +75,12 @@ function Waffle(x, y, width, height, boxes_across, boxes_down, table, column_hea
         }
     }
 
-    //add categories
+    //add categories and boxes
     addCategories();
     addBoxes();
 
     //Draw the waffle
     this.draw = function () {
-        //console.log('boxes', boxes.length);
         for (var i = 0; i < boxes.length; i++) {
             for (var j = 0; j < boxes[i].length; j++) {
                 if (boxes[i][j].category != undefined) {

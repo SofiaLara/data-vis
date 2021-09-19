@@ -1,23 +1,19 @@
 function EatingHabits(ten) {
 
-  // Name for the visualisation to appear in the menu bar.
+  // Name of the visualisation.
   this.name = 'Eating habits';
-
-  // Each visualisation must have a unique ID with no special
-  // characters.
-  this.id = 'eating';
 
   // Property to represent whether data has been loaded.
   this.loaded = false;
 
-  //Save all waffle objects
+  //Save all waffle data and objects
   var dataWaff;
   var waffle;
+
+  //Save the day selected in the dropdown
   var daySelected;
 
-
-  // Preload the data. This function is called automatically by the
-  // gallery when a visualisation is added.
+  // Preload the data.
   this.preload = function () {
     var self = this;
     leftOverPic = ten.loadImage('img/leftover.png');
@@ -28,49 +24,50 @@ function EatingHabits(ten) {
     mealOutPic = ten.loadImage('img/out.png');
     dataWaff = ten.loadTable(
       './data/survey/finalData.csv', 'csv', 'header',
-      // Callback function to set the value
-      // this.loaded to true.
-      function (table) {
+      // Callback function to set the value this.loaded to true.
+      function () {
         self.loaded = true;
         self.setup();
       });
   };
 
   this.setup = function () {
-     if (!this.loaded) {
-      console.log('Data not yet loaded');
-      return;
-     }
+    this.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+      "Sunday"];
     
-    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
-		"Sunday"
-    ];
+    this.habits = [];
 
     this.values = ['Take-away', 'Cooked from fresh', 'Ready meal', 'Ate out',
-      'Skipped meal', 'Left overs'
-    ];
+      'Skipped meal', 'Left overs'];
 
     this.pics = [takePic, cookPic, readyMealPic, mealOutPic, noMealPic, leftOverPic];
+
+    //Loop over values to create an object that holds values and corresponding icons
+    for (var i = 0; i < this.values.length; i++) {
+      this.habits.push({
+          "value": this.values[i],
+          "pic": this.pics[i],
+      });
+    }
 
     // Create a select DOM element.
     this.dropdown = ten.createSelect();
     this.dropdown.parent('0');
 
-    for (var i =0; i< days.length; i++) {
-      this.dropdown.option(days[i]);
+    //Loops over the days array to fill the dropdown options
+    for (var i = 0; i < this.days.length; i++) {
+      this.dropdown.option(this.days[i]);
     }
-  };
-
-  this.destroy = function () {
   };
 
   this.draw = function () {
     if (!this.loaded) {
-      console.log('Data not yet loaded');
       return;
     }
+
     daySelected = this.dropdown.value();
-    waffle = new Waffle(50, 50, 400, 400, 10, 10, dataWaff, daySelected, this.values, this.pics, ten);
+    //Pass days argument to draw one waffle at a time when a day is selected.
+    waffle = new Waffle(75, 75, 350, 350, 10, 10, dataWaff, daySelected, this.habits, ten);
 
     waffle.draw();
     waffle.checkMouse(ten.mouseX, ten.mouseY);

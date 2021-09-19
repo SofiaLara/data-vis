@@ -8,7 +8,7 @@ function Box(x, y, width, height, category, ins) {
     //Public
     this.category = category;
 
-    //Mouse Over
+    //Mouse Over each picture to show data
     this.mouseOver = function(mouseX, mouseY) {
         if (mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height) {
             ins.stroke(this.category.color);
@@ -20,6 +20,7 @@ function Box(x, y, width, height, category, ins) {
         return false;
     };
 
+    //Creates a pictogram using icons
     this.draw = function () {
         ins.image(this.category.pic, x, y, width, height);
     };

@@ -9,13 +9,13 @@ function WorldData(nine) {
   //Save all cities objects
   this.cities = [];
 
-  // Preload the data. This function is called automatically by the gallery when a visualisation is added.
+  // Preload the data.
   // Data from https://simplemaps.com/data/world-cities.
   this.preload = function () {
     var self = this;
     this.dataCity = nine.loadTable(
       './data/flights/worldpopulation.csv', 'csv', 'header',
-      // Callback function to set the value this.loaded to true.
+      // Callback function to set the value this.loaded to true and start the setup
       function () {
         self.loaded = true;
         self.setup();
@@ -23,10 +23,6 @@ function WorldData(nine) {
   };
 
   this.setup = function () {
-     if (!this.loaded) {
-      return;
-     }
-  
     var cityRows = this.dataCity.getRows();
     for (var j in cityRows) {
       var cities = cityRows[j].getString("city");
@@ -41,8 +37,8 @@ function WorldData(nine) {
     // Create a select DOM element.
     this.dropdown = nine.createSelect();
     this.dropdown.parent('1');
-    this.dropdown.option("large");
-    this.dropdown.option("small");
+    this.dropdown.option("Largest");
+    this.dropdown.option("Smallest");
   };
 
   this.draw = function () {
@@ -69,8 +65,8 @@ function WorldData(nine) {
   this.showTitle = function (sel) {
     nine.push()
     nine.fill(0, 0, 0);
-    nine.textSize(32);
-    nine.text(`${sel}${this.name}`, nine.width/4, nine.height/6);
+    nine.textSize(24);
+    nine.text(`${sel} ${this.name}`, nine.width/4, nine.height/6);
     nine.pop()
   }
 }
